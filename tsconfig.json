@@ -19,7 +19,10 @@
       }
     ],
     "paths": {
+      "@component/*": ["./src/components/*"],
       "@config/*": ["./src/config/*"],
+      "@image/*": ["./src/images/*"],
+      "@interface/*": ["./src/interface/*"],
       "@style": ["./src/style/globals.css"],
       "@/*": ["./src/*"]
     }
