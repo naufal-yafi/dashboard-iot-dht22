@@ -4,8 +4,8 @@ import "@style";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Monitoring Hidroponik",
-  description: "IOT menggunakan sensor DHT22",
+  title: "Hydroponic Monitoring",
+  description: "IoT using DHT22 sensor",
 };
 
 export default function RootLayout({
