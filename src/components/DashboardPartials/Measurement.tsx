@@ -1,12 +1,16 @@
 import { vt323 } from "@config/fonts";
 import PropsMeasurement from "@interface/PropsMeasurement";
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
+import Image from "next/image";
 
 const Measurement = (props: PropsMeasurement) => {
   return (
     <Card className="col-span-12 sm:col-span-4 h-[200px]">
       <CardHeader className="absolute z-10 top-1 flex-col !items-start">
-        <p className="text-tiny uppercase font-bold">{props.title}</p>
+        <p className="text-tiny uppercase font-bold flex items-center gap-2">
+          <Image src={props.icon} alt="icon" width={20} height={20} />
+          {props.title}
+        </p>
       </CardHeader>
       <CardBody className="mt-10 flex justify-between">
         <div
@@ -23,8 +27,9 @@ const Measurement = (props: PropsMeasurement) => {
           </p>
         </div>
 
-        <p className="text-xs">
-          Automatic data reload within {props.reload_time}s
+        <p className="text-sm">
+          <span>Total {props.total} data</span> <br />
+          <span>Mean {props.mean}{props.format}</span>
         </p>
       </CardBody>
     </Card>
@@ -32,10 +37,12 @@ const Measurement = (props: PropsMeasurement) => {
 };
 
 Measurement.defaultProps = {
+  icon: "",
   title: "Your Title",
   range: "0 - 0",
   format: "°C",
-  reload_time: 0,
+  total: 0,
+  mean: 0,
   value: 0,
 };
 
