@@ -1,72 +1,63 @@
-import imgDanger from "@image/condition/danger.svg";
-import imgSuccess from "@image/condition/success.svg";
-import imgWarning from "@image/condition/warning.svg";
 import PropsAlert from "@interface/PropsAlert";
-import { Button, Card, CardFooter, CardHeader } from "@nextui-org/react";
-import Image from "next/image";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+} from "@nextui-org/react";
 
 const Alert = (props: PropsAlert) => {
-  let background;
+  let textColor: string = "";
 
   if (props.status === "danger") {
-    background = imgDanger;
+    textColor = "text-red-500";
   } else if (props.status === "warning") {
-    background = imgWarning;
+    textColor = "text-yellow-600";
   } else {
-    background = imgSuccess;
+    textColor = "text-green-600";
   }
 
   return (
-    <div className="col-span-12 sm:col-span-4">
-      <Card className="h-[150px]">
-        <CardHeader className="absolute z-10 top-1 flex-col !items-start">
-          <h1 className="text-tiny uppercase font-bold">Alert</h1>
-          <p className="text-tiny">Condition</p>
-          <p className="mt-2 text-center w-full uppercase font-bold text-white">
-            {props.condition}
-          </p>
-        </CardHeader>
-        <Image src={background} alt="bg" width={512} height={256} />
-        <CardFooter className="absolute bg-black/20 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
-          <div className="text-white">
-            <p className="text-tiny">Notifications.</p>
-            <p className="text-tiny">You can stop siren.</p>
-          </div>
-          <div className="flex flex-wrap gap-2 items-center">
-            <Button
-              className="text-tiny"
-              color="default"
-              radius="full"
-              size="sm"
-              variant="bordered"
-            >
-              <p className="text-white">Test</p>
-            </Button>
-            <Button
-              className="text-tiny"
-              color="default"
-              radius="full"
-              size="sm"
-            >
-              Stop
-            </Button>
-          </div>
-        </CardFooter>
-      </Card>
-      <Card className="h-[40px] mt-2">
-        <CardHeader className="absolute z-10 flex gap-2 items-center h-[40px]">
-          <h1 className="text-xs uppercase">Reload Time</h1>
-          <p className="text-lg font-bold">{props.time}s</p>
-        </CardHeader>
-      </Card>
-    </div>
+    <Card className="col-span-12 sm:col-span-4 h-[200px]">
+      <CardHeader className="absolute z-10 top-1 flex-col !items-start">
+        <h1 className="text-tiny uppercase font-bold">Alert</h1>
+        <p className="text-tiny">Condition</p>
+      </CardHeader>
+      <CardBody className="mt-10 text-center">
+        <p className={`mt-2 uppercase font-bold text-2xl ${textColor}`}>
+          {props.status}
+        </p>
+        <p className="capitalize">{props.condition}</p>
+      </CardBody>
+      <CardFooter className="absolute bg-white/20 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
+        <div className="text-black">
+          <p className="text-tiny">Notifications.</p>
+          <p className="text-tiny">You can stop siren.</p>
+        </div>
+        <div className="flex flex-wrap gap-2 items-center">
+          <Button
+            className="text-tiny"
+            color="default"
+            radius="full"
+            size="sm"
+            variant="flat"
+          >
+            <p className="text-black/80">Test</p>
+          </Button>
+          <Button className="text-tiny" color="danger" radius="full" size="sm">
+            Stop
+          </Button>
+        </div>
+      </CardFooter>
+    </Card>
   );
 };
 
 Alert.defaultProps = {
-  status: "normal", // warning, danger
+  status: "success", // warning, danger
   condition: "normal", // dryness moist
-  time: 0,
+  is_loading: true,
 };
 
 export default Alert;

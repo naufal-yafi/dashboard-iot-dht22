@@ -17,6 +17,8 @@ const CardHistoryAlert = (props: PropsCardHistoryAlert) => {
         </Chip>
       </hgroup>
 
+      <p className="font-bold text-xs uppercase">{props.condition}</p>
+
       <p className="flex gap-4">
         <span className="text-sm mt-2 flex gap-2 font-medium">
           <Image
@@ -49,6 +51,7 @@ CardHistoryAlert.defaultProps = {
   temperature: 0,
   humidity: 0,
   is_danger: true,
+  condition: "condition",
 };
 
 export default CardHistoryAlert;

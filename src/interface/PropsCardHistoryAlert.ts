@@ -4,6 +4,7 @@ interface PropsCardHistoryAlert {
   temperature: number;
   humidity: number;
   is_danger: boolean;
+  condition: string;
 }
 
 export default PropsCardHistoryAlert;
