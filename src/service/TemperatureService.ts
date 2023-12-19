@@ -28,7 +28,6 @@ export const calculate = (datas: any): ServiceCalculate => {
     total: LENGTH + 1,
     condition: "",
     status: "",
-    time: new Date(),
     temperature: {
       value: TEMPERATURE,
       mean: countTemperature / (LENGTH + 1),

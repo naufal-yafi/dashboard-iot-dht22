@@ -2,7 +2,6 @@ interface ServiceCalculate {
   total: number;
   condition: string;
   status: string;
-  time: Date;
   temperature: {
     value: number;
     mean: number;
