@@ -23,7 +23,7 @@ const Alert = (props: PropsAlert) => {
           <h1 className="text-tiny uppercase font-bold">Alert</h1>
           <p className="text-tiny">Condition</p>
           <p className="mt-2 text-center w-full uppercase font-bold text-white">
-            {props.condition}
+            {props.is_loading ? "Loading..." : <>{props.condition}</>}
           </p>
         </CardHeader>
         <Image src={background} alt="bg" width={512} height={256} />
@@ -67,6 +67,7 @@ Alert.defaultProps = {
   status: "normal", // warning, danger
   condition: "normal", // dryness moist
   time: 0,
+  is_loading: true,
 };
 
 export default Alert;

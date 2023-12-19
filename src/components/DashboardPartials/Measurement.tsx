@@ -21,15 +21,16 @@ const Measurement = (props: PropsMeasurement) => {
             <span className="text-3xl">{props.format}</span>
           </h2>
           <p>
-            <span>normal</span>
-            <br />
             <span className="text-xl font-bold">{props.range}</span>
           </p>
         </div>
 
         <p className="text-sm">
-          <span>Total {props.total} data</span> <br />
-          <span>Mean {props.mean}{props.format}</span>
+          <span>Totaling {props.total} data</span> <br />
+          <span>
+            Mean {props.mean}
+            {props.format}
+          </span>
         </p>
       </CardBody>
     </Card>
