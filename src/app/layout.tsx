@@ -1,3 +1,5 @@
+import Footer from "@component/Footer";
+import Header from "@component/Header";
 import { inter } from "@config/fonts";
 import Providers from "@config/providers";
 import "@style";
@@ -18,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body className={inter.className}>
+        <Header />
         <Suspense fallback={<LoadingPage />}>
           <Providers>{children}</Providers>
         </Suspense>
+        <Footer />
       </body>
     </html>
   );

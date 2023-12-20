@@ -13,3 +13,6 @@ export const formatClock = (currentDate: string): string => {
   const minutes = date.getUTCMinutes();
   return `${hours < 10 ? 0 : ""}${hours}.${minutes < 10 ? 0 : ""}${minutes}`;
 };
+
+export const fixedOutputFloat = (value: number): number =>
+  parseFloat(value.toFixed(2));
