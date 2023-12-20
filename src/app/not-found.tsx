@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const PageNotFound = () => {
   return (
-    <main className="w-full h-screen flex flex-col justify-center items-center gap-8 px-6 md:px-24 lg:px-32">
+    <main className="w-full h-[50vh] flex flex-col justify-center items-center gap-8 px-6 md:px-24 lg:px-32">
       <hgroup className="text-center flex flex-col justify-center items-center">
         <h2 className="text-sm font-bold text-red-600">404 Not Found</h2>
         <h1 className="text-4xl font-bold">Page Not Found</h1>

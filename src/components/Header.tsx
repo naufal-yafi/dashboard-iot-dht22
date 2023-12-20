@@ -1,5 +1,5 @@
 import { pixelifySans } from "@config/fonts";
-import { Avatar, AvatarGroup, Divider } from "@nextui-org/react";
+import { Avatar, Divider } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -20,12 +20,11 @@ const Header = () => {
           </div>
         </Link>
         <nav>
-          <Link href="">
-            <AvatarGroup size="sm">
-              <Avatar src="/wokwi.png" />
-              <Avatar src="/license-icon.png" />
-              <Avatar src="/github.svg" />
-            </AvatarGroup>
+          <Link
+            href="https://github.com/naufal-yafi/dashboard-iot-dht22"
+            target="_blank"
+          >
+            <Avatar src="/github.svg" size="sm" />
           </Link>
         </nav>
       </header>

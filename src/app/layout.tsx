@@ -1,3 +1,4 @@
+import Footer from "@component/Footer";
 import Header from "@component/Header";
 import { inter } from "@config/fonts";
 import Providers from "@config/providers";
@@ -23,6 +24,7 @@ export default function RootLayout({
         <Suspense fallback={<LoadingPage />}>
           <Providers>{children}</Providers>
         </Suspense>
+        <Footer />
       </body>
     </html>
   );

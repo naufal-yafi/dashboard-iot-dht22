@@ -59,7 +59,7 @@ const Dashboard = () => {
             variant="flat"
             onClick={() => playSiren()}
           >
-            <p className="text-black/80">Test</p>
+            <p className="text-black/80">Test Siren</p>
           </Button>
           <Button
             className="text-tiny"
