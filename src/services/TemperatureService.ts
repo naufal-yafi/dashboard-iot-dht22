@@ -20,35 +20,18 @@ export const calculate = (datas: any): ServiceCalculate => {
 
   let countTemperature: number = 0;
   let countHumidity: number = 0;
-  let condition: string = "";
-  let status: string = "";
 
   for (let item of datas) {
     countTemperature += item.temperature;
     countHumidity += item.humidity;
   }
 
-  if (TEMPERATURE <= 8 && HUMIDITY >= 80) {
-    condition = "moist";
-    status = "danger";
-  } else if (TEMPERATURE <= 13 && HUMIDITY >= 75) {
-    condition = "moist";
-    status = "warning";
-  } else if (TEMPERATURE <= 35 && HUMIDITY >= 40) {
-    condition = "dryness";
-    status = "danger";
-  } else if (TEMPERATURE <= 30 && HUMIDITY >= 45) {
-    condition = "dryness";
-    status = "warning";
-  } else {
-    condition = "normal";
-    status = "ok";
-  }
+  const calculateConditionStatus = calculateCondition(TEMPERATURE, HUMIDITY);
 
   return {
     total: LENGTH + 1,
-    condition: condition,
-    status: status,
+    condition: calculateConditionStatus.condition,
+    status: calculateConditionStatus.status,
     temperature: {
       value: TEMPERATURE,
       mean: fixedOutputFloat(countTemperature / (LENGTH + 1)),
@@ -57,5 +40,34 @@ export const calculate = (datas: any): ServiceCalculate => {
       value: HUMIDITY,
       mean: fixedOutputFloat(countHumidity / (LENGTH + 1)),
     },
+  };
+};
+
+const calculateCondition = (temperature: number, humidity: number) => {
+  let condition: string = "";
+  let status: string = "";
+
+  if (temperature > 18 && temperature < 25 && humidity > 50 && humidity < 70) {
+    condition = "normal";
+    status = "ok";
+  } else if (temperature > 35 && humidity > 80) {
+    condition = "moist";
+    status = "danger";
+  } else if (temperature > 25 && humidity > 70) {
+    condition = "moist";
+    status = "warning";
+  } else if (temperature < 18 && humidity < 50) {
+    condition = "dryness";
+    status = "warning";
+  } else if (temperature < 10 && humidity < 30) {
+    condition = "dryness";
+    status = "danger";
+  } else {
+    console.log("Kondisi tidak terpenuhi");
+  }
+
+  return {
+    condition: condition,
+    status: status,
   };
 };
