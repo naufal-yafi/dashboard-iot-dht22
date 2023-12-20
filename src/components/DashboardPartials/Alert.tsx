@@ -61,7 +61,7 @@ const Alert = (props: PropsAlert) => {
 };
 
 Alert.defaultProps = {
-  status: "success", // warning, danger
+  status: "ok", // warning, danger
   condition: "normal", // dryness moist
   is_loading: false,
   children: <></>,
