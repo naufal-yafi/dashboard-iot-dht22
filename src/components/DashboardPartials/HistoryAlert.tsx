@@ -1,11 +1,11 @@
 "use client";
 
-import useFetchApi from "@/hooks/useFetchApi";
-import { formatClock, formatDate } from "@/lib/utils";
-import { getAllHistory } from "@/service/HistoryService";
 import CardHistoryAlert from "@component/CardHistoryAlert";
+import useFetchApi from "@hook/useFetchApi";
 import ApiHistory from "@interface/ApiHistory";
+import { formatClock, formatDate } from "@lib/utils";
 import { Card, CardBody, CardHeader, ScrollShadow } from "@nextui-org/react";
+import { getAllHistory } from "@service/HistoryService";
 
 const HistoryAlert = () => {
   const { loading, snapshot, error } = useFetchApi(getAllHistory);

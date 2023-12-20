@@ -20,7 +20,8 @@ const Measurement = (props: PropsMeasurement) => {
             {props.value}
             <span className="text-3xl">{props.format}</span>
           </h2>
-          <p>
+          <p className="flex flex-col">
+            <span>normal</span>
             <span className="text-xl font-bold">{props.range}</span>
           </p>
         </div>

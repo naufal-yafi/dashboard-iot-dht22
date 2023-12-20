@@ -15,6 +15,11 @@ const useFetchApi = (callback: Function) => {
     setLoading(false);
   };
 
+  const updateSnapshot = async () => {
+    setLoading(true);
+    await fetching();
+  };
+
   useEffect(() => {
     fetching();
   }, []);
@@ -23,6 +28,7 @@ const useFetchApi = (callback: Function) => {
     loading,
     snapshot,
     error: errorMessage.current,
+    updateSnapshot,
   };
 };
 

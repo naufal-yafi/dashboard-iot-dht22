@@ -21,8 +21,12 @@
     "paths": {
       "@component/*": ["./src/components/*"],
       "@config/*": ["./src/config/*"],
+      "@hook/*": ["./src/hooks/*"],
       "@image/*": ["./src/images/*"],
       "@interface/*": ["./src/interface/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@service/*": ["./src/services/*"],
+      "@sound/*": ["./src/sound/*"],
       "@style": ["./src/style/globals.css"],
       "@/*": ["./src/*"]
     }
