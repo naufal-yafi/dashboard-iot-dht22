@@ -1,8 +1,10 @@
+import api from "@config/api";
 import ApiTemperature from "@interface/ApiTemperature";
 import ServiceCalculate from "@interface/ServiceCalculate";
+import { fixedOutputFloat } from "@lib/utils";
 
 export const getAllTemperature = async (): Promise<ApiTemperature> => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/iot`, {
+  const response = await fetch(`${api.url}${api.path.temperature}`, {
     cache: "no-store",
     next: {
       revalidate: 0,
@@ -49,11 +51,11 @@ export const calculate = (datas: any): ServiceCalculate => {
     status: status,
     temperature: {
       value: TEMPERATURE,
-      mean: countTemperature / (LENGTH + 1),
+      mean: fixedOutputFloat(countTemperature / (LENGTH + 1)),
     },
     humidity: {
       value: HUMIDITY,
-      mean: countHumidity / (LENGTH + 1),
+      mean: fixedOutputFloat(countHumidity / (LENGTH + 1)),
     },
   };
 };
