@@ -1,19 +1,21 @@
 "use client";
 
-import useFetchApi from "@/hooks/useFetchApi";
-import { calculate, getAllTemperature } from "@/service/TemperatureService";
+import useFetchApi from "@hook/useFetchApi";
 import iconHumidity from "@image/humidity-icon.svg";
 import iconTemperature from "@image/temperature-icon.svg";
 import { Button } from "@nextui-org/react";
+import { calculate, getAllTemperature } from "@service/TemperatureService";
 import Alert from "./DashboardPartials/Alert";
 import HistoryAlert from "./DashboardPartials/HistoryAlert";
 import Measurement from "./DashboardPartials/Measurement";
 import ReloadData from "./DashboardPartials/ReloadData";
+import LoadingDashboard from "./LoadingDashboard";
 
 const Dashboard = () => {
-  const { loading, snapshot, error } = useFetchApi(getAllTemperature);
+  const { loading, snapshot, error, updateSnapshot } =
+    useFetchApi(getAllTemperature);
 
-  if (loading) return <>Loading...</>;
+  if (loading) return <LoadingDashboard />;
   if (error) return <>{error}</>;
 
   const data = calculate(snapshot);
@@ -43,7 +45,13 @@ const Dashboard = () => {
         total={data.total}
       />
       <ReloadData condition={data.condition}>
-        <Button className="text-tiny" color="primary" radius="full" size="sm">
+        <Button
+          className="text-tiny"
+          color="primary"
+          radius="full"
+          size="sm"
+          onClick={updateSnapshot}
+        >
           Reload
         </Button>
       </ReloadData>

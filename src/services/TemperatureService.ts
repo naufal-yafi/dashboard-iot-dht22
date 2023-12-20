@@ -40,7 +40,7 @@ export const calculate = (datas: any): ServiceCalculate => {
     status = "warning";
   } else {
     condition = "normal";
-    status = "success";
+    status = "ok";
   }
 
   return {
