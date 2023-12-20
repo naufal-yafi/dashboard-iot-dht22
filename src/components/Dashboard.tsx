@@ -9,12 +9,13 @@ import Alert from "./DashboardPartials/Alert";
 import HistoryAlert from "./DashboardPartials/HistoryAlert";
 import Measurement from "./DashboardPartials/Measurement";
 import ReloadData from "./DashboardPartials/ReloadData";
+import LoadingDashboard from "./LoadingDashboard";
 
 const Dashboard = () => {
   const { loading, snapshot, error, updateSnapshot } =
     useFetchApi(getAllTemperature);
 
-  if (loading) return <>Loading...</>;
+  if (loading) return <LoadingDashboard />;
   if (error) return <>{error}</>;
 
   const data = calculate(snapshot);

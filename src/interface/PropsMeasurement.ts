@@ -6,6 +6,7 @@ interface PropsMeasurement {
   total: number;
   mean: number;
   value: number;
+  is_loading: boolean;
 }
 
 export default PropsMeasurement;

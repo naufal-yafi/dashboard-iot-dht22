@@ -1,7 +1,7 @@
 import condDry from "@image/drought.jpeg";
 import condNormal from "@image/normal.jpeg";
 import PropsReloadData from "@interface/PropsReloadData";
-import { Card, CardFooter } from "@nextui-org/react";
+import { Card, CardFooter, Skeleton } from "@nextui-org/react";
 import Image from "next/image";
 
 const ReloadData = (props: PropsReloadData) => {
@@ -17,13 +17,18 @@ const ReloadData = (props: PropsReloadData) => {
       isFooterBlurred
       className="w-full h-[300px] col-span-12 sm:col-span-5"
     >
-      <Image
-        alt="Card example background"
-        className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
-        src={imageCond}
-        width={450}
-        height={200}
-      />
+      {props.is_loading ? (
+        <Skeleton className="w-full h-[300px]" />
+      ) : (
+        <Image
+          alt="Card example background"
+          className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
+          src={imageCond}
+          width={450}
+          height={200}
+          priority
+        />
+      )}
       <CardFooter className="absolute bg-black/20 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
         <div>
           <p className="text-white text-tiny">Get new data.</p>
@@ -39,6 +44,7 @@ const ReloadData = (props: PropsReloadData) => {
 ReloadData.defaultProps = {
   condition: "normal",
   children: <></>,
+  is_loading: false,
 };
 
 export default ReloadData;
