@@ -1,37 +1,39 @@
-import { useRef } from "react";
+import { useState } from "react";
 
 const useSiren = (document: HTMLAudioElement | null) => {
-  const isError = useRef<string | null>(null);
+  const [isError, setIsError] = useState<string | null>(null);
 
-  const playSiren = async () => {
+  const playSiren = () => {
     if (document && document.play) {
       try {
-        await document.play();
+        document.play();
+        setIsError(null);
       } catch (error) {
-        isError.current = (error as Error).message;
+        setIsError((error as Error).message);
       }
     } else {
-      isError.current = "Audio playback is not supported.";
+      setIsError("Audio playback is not supported.");
     }
   };
 
   const stopSiren = () => {
-    try {
-      document &&
-        document.pause &&
-        (() => {
-          document.pause();
-          document.currentTime = 0;
-        })();
-    } catch (error) {
-      isError.current = (error as Error).message;
+    if (document && document.pause) {
+      try {
+        document.pause();
+        document.currentTime = 0;
+        setIsError(null);
+      } catch (error) {
+        setIsError((error as Error).message);
+      }
+    } else {
+      setIsError("Audio stopping is not supported.");
     }
   };
 
   return {
     playSiren,
     stopSiren,
-    errorSiren: isError.current,
+    errorSiren: isError,
   };
 };
 

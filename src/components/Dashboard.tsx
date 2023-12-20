@@ -41,7 +41,7 @@ const Dashboard = () => {
             radius="full"
             size="sm"
             variant="flat"
-            onClick={playSiren}
+            onClick={() => playSiren()}
           >
             <p className="text-black/80">Test</p>
           </Button>
