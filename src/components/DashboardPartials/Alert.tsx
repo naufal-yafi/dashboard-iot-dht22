@@ -1,6 +1,5 @@
 import PropsAlert from "@interface/PropsAlert";
 import {
-  Button,
   Card,
   CardBody,
   CardFooter,
@@ -53,25 +52,7 @@ const Alert = (props: PropsAlert) => {
               <Skeleton className="h-8 w-16 rounded-full" />
             </>
           ) : (
-            <>
-              <Button
-                className="text-tiny"
-                color="default"
-                radius="full"
-                size="sm"
-                variant="flat"
-              >
-                <p className="text-black/80">Test</p>
-              </Button>
-              <Button
-                className="text-tiny"
-                color="danger"
-                radius="full"
-                size="sm"
-              >
-                Stop
-              </Button>
-            </>
+            <>{props.children}</>
           )}
         </div>
       </CardFooter>
@@ -83,6 +64,7 @@ Alert.defaultProps = {
   status: "success", // warning, danger
   condition: "normal", // dryness moist
   is_loading: false,
+  children: <></>,
 };
 
 export default Alert;
