@@ -1,5 +1,11 @@
 "use client";
 
+import Alert from "@component/DashboardPartials/Alert";
+import HistoryAlert from "@component/DashboardPartials/HistoryAlert";
+import Measurement from "@component/DashboardPartials/Measurement";
+import ReloadData from "@component/DashboardPartials/ReloadData";
+import ErrorBar from "@component/ErrorBar";
+import LoadingDashboard from "@component/LoadingDashboard";
 import useFetchApi from "@hook/useFetchApi";
 import useSiren from "@hook/useSiren";
 import iconHumidity from "@image/humidity-icon.svg";
@@ -8,12 +14,6 @@ import { BreadcrumbItem, Breadcrumbs, Button } from "@nextui-org/react";
 import { calculate, getAllTemperature } from "@service/TemperatureService";
 import Link from "next/link";
 import { useEffect } from "react";
-import Alert from "./DashboardPartials/Alert";
-import HistoryAlert from "./DashboardPartials/HistoryAlert";
-import Measurement from "./DashboardPartials/Measurement";
-import ReloadData from "./DashboardPartials/ReloadData";
-import ErrorBar from "./ErrorBar";
-import LoadingDashboard from "./LoadingDashboard";
 
 const Dashboard = () => {
   const { loading, snapshot, error, updateSnapshot } =
