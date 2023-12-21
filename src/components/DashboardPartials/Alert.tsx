@@ -65,6 +65,7 @@ Alert.defaultProps = {
   condition: "normal", // dryness moist
   is_loading: false,
   children: <></>,
+  count: 0,
 };
 
 export default Alert;
