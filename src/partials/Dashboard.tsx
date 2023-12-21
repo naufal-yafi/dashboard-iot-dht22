@@ -13,18 +13,47 @@ import iconTemperature from "@image/temperature-icon.svg";
 import { BreadcrumbItem, Breadcrumbs, Button } from "@nextui-org/react";
 import { calculate, getAllTemperature } from "@service/TemperatureService";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Dashboard = () => {
   const { loading, snapshot, error, updateSnapshot } =
     useFetchApi(getAllTemperature);
   const { playSiren, stopSiren, errorSiren } = useSiren();
+  const [count, setCount] = useState<number>(1);
 
   useEffect(() => {
-    if (loading) return; // Avoid running the siren if still loading
+    if (loading) return;
     const data = calculate(snapshot);
     if (data.status === "danger") playSiren();
   }, [loading, snapshot, playSiren]);
+
+  useEffect(() => {
+    const timeReload = setInterval(() => {
+      updateSnapshot();
+    }, 10000);
+
+    return () => {
+      clearInterval(timeReload);
+    };
+  }, []);
+
+  useEffect(() => {
+    let countTime = 1;
+    const countDown = setInterval(() => {
+      setCount(countTime);
+
+      if (countTime > 9) {
+        setCount(1);
+        countTime = 1;
+      } else {
+        countTime++;
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(countDown);
+    };
+  }, []);
 
   if (loading) return <LoadingDashboard />;
   if (error) return <>{error}</>;
@@ -55,6 +84,7 @@ const Dashboard = () => {
           status={data.status}
           condition={data.condition}
           is_loading={false}
+          count={count}
         >
           <Button
             className="text-tiny"

@@ -22,7 +22,7 @@ const Alert = (props: PropsAlert) => {
     <Card className="col-span-12 sm:col-span-4 h-[200px]">
       <CardHeader className="absolute z-10 top-1 flex-col !items-start">
         <h1 className="text-tiny uppercase font-bold">Alert</h1>
-        <p className="text-tiny">Condition</p>
+        <p className="text-tiny">Auto reload in {props.count}</p>
       </CardHeader>
       <CardBody className="mt-10 text-center">
         {props.is_loading ? (
