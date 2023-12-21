@@ -5,6 +5,7 @@ interface PropsAlert {
   condition: string;
   is_loading: boolean;
   children: ReactNode;
+  count: number;
 }
 
 export default PropsAlert;
