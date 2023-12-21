@@ -1,14 +1,14 @@
 interface ServiceCalculate {
-  total: number;
-  condition: string;
-  status: string;
-  temperature: {
-    value: number;
-    mean: number;
+  readonly total: number;
+  readonly condition: string;
+  readonly status: string;
+  readonly temperature: {
+    readonly value: number;
+    readonly mean: number;
   };
-  humidity: {
-    value: number;
-    mean: number;
+  readonly humidity: {
+    readonly value: number;
+    readonly mean: number;
   };
 }
 

@@ -1,10 +1,10 @@
 interface ApiHistory {
-  temperature: number;
-  humidity: number;
-  is_danger: boolean;
-  datetime: string;
-  condition: string;
-  id: string;
+  readonly temperature: number;
+  readonly humidity: number;
+  readonly is_danger: boolean;
+  readonly datetime: string;
+  readonly condition: string;
+  readonly id: string;
 }
 
 export default ApiHistory;

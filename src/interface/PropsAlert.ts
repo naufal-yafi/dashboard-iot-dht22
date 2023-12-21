@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
 
 interface PropsAlert {
-  status: string;
-  condition: string;
-  is_loading: boolean;
+  readonly status: string;
+  readonly condition: string;
+  is_loading?: boolean;
   children: ReactNode;
-  count: number;
+  count?: number;
 }
 
 export default PropsAlert;

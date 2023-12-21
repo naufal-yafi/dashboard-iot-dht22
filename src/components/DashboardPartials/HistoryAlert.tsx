@@ -3,7 +3,6 @@
 import CardHistoryAlert from "@component/CardHistoryAlert";
 import useFetchApi from "@hook/useFetchApi";
 import ApiHistory from "@interface/ApiHistory";
-import PropsHistoryAlert from "@interface/PropsHistoryAlert";
 import { formatClock, formatDate } from "@lib/utils";
 import {
   Card,
@@ -14,7 +13,7 @@ import {
 } from "@nextui-org/react";
 import { getAllHistory } from "@service/HistoryService";
 
-const HistoryAlert = (props: PropsHistoryAlert) => {
+const HistoryAlert = (props: { is_loading: boolean }) => {
   const { loading, snapshot, error } = useFetchApi(getAllHistory);
 
   const ShowData = () => {
