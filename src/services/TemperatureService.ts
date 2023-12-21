@@ -45,7 +45,7 @@ export const calculate = (datas: any): ServiceCalculate => {
 
 const calculateCondition = (temperature: number, humidity: number) => {
   let condition: string = "";
-  let status: string = "OK";
+  let status: string = "";
 
   if (
     temperature <= 10 ||
@@ -53,12 +53,12 @@ const calculateCondition = (temperature: number, humidity: number) => {
     humidity <= 30 ||
     humidity >= 80
   ) {
-    condition = "danger";
+    status = "danger";
 
     if (temperature >= 35 && humidity >= 80) {
-      status = "moist";
+      condition = "moist";
     } else {
-      status = "dryness";
+      condition = "dryness";
     }
   } else if (
     temperature < 18 ||
@@ -66,14 +66,15 @@ const calculateCondition = (temperature: number, humidity: number) => {
     humidity < 50 ||
     humidity > 70
   ) {
-    condition = "warning";
+    status = "warning";
 
     if (temperature > 25 && humidity > 70) {
-      status = "moist";
+      condition = "moist";
     } else {
-      status = "dryness";
+      condition = "dryness";
     }
   } else {
+    status = "ok";
     condition = "normal";
   }
 

@@ -10,9 +10,9 @@ import {
 const Alert = (props: PropsAlert) => {
   let textColor: string = "";
 
-  if (props.status === "danger") {
+  if (props.status.toLocaleLowerCase() == "danger") {
     textColor = "text-red-500";
-  } else if (props.status === "warning") {
+  } else if (props.status == "warning") {
     textColor = "text-yellow-600";
   } else {
     textColor = "text-green-600";

@@ -28,6 +28,7 @@
       "@service/*": ["./src/services/*"],
       "@sound/*": ["./src/sound/*"],
       "@style": ["./src/style/globals.css"],
+      "@validation/*": ["./src/validation/*"],
       "@/*": ["./src/*"]
     }
   },
