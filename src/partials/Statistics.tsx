@@ -1,5 +1,6 @@
 "use client";
 
+import LineChart from "@component/LineChart";
 import { BreadcrumbItem, Breadcrumbs } from "@nextui-org/react";
 import Link from "next/link";
 
@@ -22,7 +23,9 @@ const Statistics = () => {
         </BreadcrumbItem>
       </Breadcrumbs>
 
-      <section className="mt-2">Development...</section>
+      <section className="mt-2 py-4">
+        <LineChart />
+      </section>
     </>
   );
 };
