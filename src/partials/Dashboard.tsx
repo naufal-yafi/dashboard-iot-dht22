@@ -14,6 +14,7 @@ import { BreadcrumbItem, Breadcrumbs, Button } from "@nextui-org/react";
 import { calculate, getAllTemperature } from "@service/TemperatureService";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import ServerError from "./ServerError";
 
 const Dashboard = () => {
   const { loading, snapshot, error, updateSnapshot } =
@@ -56,7 +57,16 @@ const Dashboard = () => {
   }, []);
 
   if (loading) return <LoadingDashboard />;
-  if (error) return <>{error}</>;
+  if (error)
+    return (
+      <ServerError message={error}>
+        <Link href="/">
+          <Button color="primary" onClick={updateSnapshot}>
+            Refresh Page
+          </Button>
+        </Link>
+      </ServerError>
+    );
 
   const data = calculate(snapshot);
 

@@ -1,7 +1,7 @@
 interface ApiTemperature {
-  temperature: number;
-  humidity: number;
-  id: string;
+  readonly temperature: number;
+  readonly humidity: number;
+  readonly id: string;
 }
 
 export default ApiTemperature;

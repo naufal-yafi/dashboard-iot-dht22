@@ -1,7 +1,7 @@
 interface ApiPostHistory {
-  temperature: number;
-  humidity: number;
-  is_danger: boolean;
-  datetime: Date;
-  condition: string;
+  readonly temperature: number;
+  readonly humidity: number;
+  readonly is_danger: boolean;
+  readonly datetime: Date;
+  readonly condition: string;
 }
