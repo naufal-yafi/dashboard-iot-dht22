@@ -26,7 +26,6 @@ const ReloadData = (props: PropsReloadData) => {
           src={imageCond}
           width={450}
           height={200}
-          priority
         />
       )}
       <CardFooter className="absolute bg-black/20 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">

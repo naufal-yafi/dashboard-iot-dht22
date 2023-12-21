@@ -11,3 +11,17 @@ export const getAllHistory = async (): Promise<ApiHistory> => {
 
   return response.json();
 };
+
+export const addHistory = async (
+  request: ApiPostHistory,
+): Promise<ApiHistory> => {
+  const response = await fetch(`${api.url}${api.path.history}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(request),
+  });
+
+  return response.json();
+};

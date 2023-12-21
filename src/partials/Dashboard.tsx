@@ -1,5 +1,11 @@
 "use client";
 
+import Alert from "@component/DashboardPartials/Alert";
+import HistoryAlert from "@component/DashboardPartials/HistoryAlert";
+import Measurement from "@component/DashboardPartials/Measurement";
+import ReloadData from "@component/DashboardPartials/ReloadData";
+import ErrorBar from "@component/ErrorBar";
+import LoadingDashboard from "@component/LoadingDashboard";
 import useFetchApi from "@hook/useFetchApi";
 import useSiren from "@hook/useSiren";
 import iconHumidity from "@image/humidity-icon.svg";
@@ -7,19 +13,18 @@ import iconTemperature from "@image/temperature-icon.svg";
 import { BreadcrumbItem, Breadcrumbs, Button } from "@nextui-org/react";
 import { calculate, getAllTemperature } from "@service/TemperatureService";
 import Link from "next/link";
-import { useRef } from "react";
-import Alert from "./DashboardPartials/Alert";
-import HistoryAlert from "./DashboardPartials/HistoryAlert";
-import Measurement from "./DashboardPartials/Measurement";
-import ReloadData from "./DashboardPartials/ReloadData";
-import ErrorBar from "./ErrorBar";
-import LoadingDashboard from "./LoadingDashboard";
+import { useEffect } from "react";
 
 const Dashboard = () => {
-  const documentAudio = useRef<HTMLAudioElement | null>(null);
   const { loading, snapshot, error, updateSnapshot } =
     useFetchApi(getAllTemperature);
-  const { playSiren, stopSiren, errorSiren } = useSiren(documentAudio.current);
+  const { playSiren, stopSiren, errorSiren } = useSiren();
+
+  useEffect(() => {
+    if (loading) return; // Avoid running the siren if still loading
+    const data = calculate(snapshot);
+    if (data.status === "danger") playSiren();
+  }, [loading, snapshot, playSiren]);
 
   if (loading) return <LoadingDashboard />;
   if (error) return <>{error}</>;
@@ -100,7 +105,6 @@ const Dashboard = () => {
           </Button>
         </ReloadData>
         <HistoryAlert />
-        <audio ref={documentAudio} src="/siren.mp3"></audio>
       </section>
     </>
   );

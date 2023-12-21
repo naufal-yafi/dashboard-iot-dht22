@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const useSiren = (document: HTMLAudioElement | null) => {
+const useSiren = () => {
   const [isError, setIsError] = useState<string | null>(null);
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const newAudio = new Audio("/siren.mp3");
+      setAudio(newAudio);
+    }
+  }, []);
 
   const playSiren = () => {
-    if (document && document.play) {
+    if (audio && audio.play) {
       try {
-        document.play();
+        audio.play();
         setIsError(null);
       } catch (error) {
         setIsError((error as Error).message);
@@ -17,10 +25,10 @@ const useSiren = (document: HTMLAudioElement | null) => {
   };
 
   const stopSiren = () => {
-    if (document && document.pause) {
+    if (audio && audio.pause) {
       try {
-        document.pause();
-        document.currentTime = 0;
+        audio.pause();
+        audio.currentTime = 0;
         setIsError(null);
       } catch (error) {
         setIsError((error as Error).message);

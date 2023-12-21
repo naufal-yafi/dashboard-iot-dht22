@@ -15,6 +15,7 @@ const Header = () => {
               title="Dashboard"
               width={18}
               height={18}
+              priority
             />
             <h1>IOT DHT22</h1>
           </div>
