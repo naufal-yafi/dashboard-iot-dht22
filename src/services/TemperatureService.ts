@@ -1,13 +1,13 @@
 import api from "@config/api";
-import ApiTemperature from "@interface/ApiTemperature";
 import ServiceCalculate from "@interface/ServiceCalculate";
 import { fixedOutputFloat } from "@lib/utils";
+import TemperatureModel from "@model/TemperatureModel";
 
-export const getAllTemperature = async (): Promise<ApiTemperature> => {
+export const getAllTemperature = async (): Promise<TemperatureModel> => {
   const response = await fetch(`${api.url}${api.path.temperature}`, {
-    cache: "no-store",
+    cache: "no-cache",
     next: {
-      revalidate: 0,
+      revalidate: 25,
     },
   });
   return await response.json();
@@ -43,7 +43,10 @@ export const calculate = (datas: any): ServiceCalculate => {
   };
 };
 
-const calculateCondition = (temperature: number, humidity: number) => {
+const calculateCondition = (
+  temperature: number,
+  humidity: number,
+): { condition: string; status: string } => {
   let condition: string = "";
   let status: string = "";
 

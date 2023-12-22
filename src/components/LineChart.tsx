@@ -28,7 +28,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Statistics",
+      text: "Statistics of All Data",
     },
   },
 };

@@ -25,6 +25,7 @@
       "@image/*": ["./src/images/*"],
       "@interface/*": ["./src/interface/*"],
       "@lib/*": ["./src/lib/*"],
+      "@model/*": ["./src/models/*"],
       "@partial/*": ["./src/partials/*"],
       "@service/*": ["./src/services/*"],
       "@sound/*": ["./src/sound/*"],

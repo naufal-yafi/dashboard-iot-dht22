@@ -2,8 +2,8 @@
 
 import CardHistoryAlert from "@component/CardHistoryAlert";
 import useFetchApi from "@hook/useFetchApi";
-import ApiHistory from "@interface/ApiHistory";
 import { formatClock, formatDate } from "@lib/utils";
+import HistoryModel from "@model/HistoryModel";
 import {
   Card,
   CardBody,
@@ -23,7 +23,7 @@ const HistoryAlert = (props: { is_loading: boolean }) => {
           <LoadingData />
         ) : (
           <>
-            {snapshot?.map((item: ApiHistory) => (
+            {snapshot?.map((item: HistoryModel) => (
               <CardHistoryAlert
                 key={item.id}
                 humidity={item.humidity}
