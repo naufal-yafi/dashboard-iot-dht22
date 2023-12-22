@@ -1,7 +1,7 @@
 import api from "@config/api";
-import ApiHistory from "@interface/ApiHistory";
+import HistoryModel from "@model/HistoryModel";
 
-export const getAllHistory = async (): Promise<ApiHistory> => {
+export const getAllHistory = async (): Promise<HistoryModel> => {
   const response = await fetch(`${api.url}${api.path.history}`, {
     cache: "no-store",
     next: {
@@ -13,8 +13,8 @@ export const getAllHistory = async (): Promise<ApiHistory> => {
 };
 
 export const addHistory = async (
-  request: ApiPostHistory,
-): Promise<ApiHistory> => {
+  request: HistoryModel,
+): Promise<HistoryModel> => {
   const response = await fetch(`${api.url}${api.path.history}`, {
     method: "POST",
     headers: {

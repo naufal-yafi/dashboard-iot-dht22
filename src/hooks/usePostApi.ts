@@ -1,11 +1,13 @@
+import HistoryModel from "@model/HistoryModel";
 import ValidateCondition from "@validation/ValidateCondition";
+import ValidateDataEntry from "@validation/ValidateDataEntry";
 import { useEffect, useRef } from "react";
 
 const usePostApi = (
   callback: Function,
-  request: ApiPostHistory,
+  request: HistoryModel,
   condition: string,
-) => {
+): { http_status_code: number | null; post_error: string | null } => {
   const statusPost = useRef<number | null>(null);
   const errorMessage = useRef<string | null>(null);
 
