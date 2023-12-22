@@ -5,9 +5,9 @@ import TemperatureModel from "@model/TemperatureModel";
 
 export const getAllTemperature = async (): Promise<TemperatureModel> => {
   const response = await fetch(`${api.url}${api.path.temperature}`, {
-    cache: "no-store",
+    cache: "no-cache",
     next: {
-      revalidate: 0,
+      revalidate: 25,
     },
   });
   return await response.json();

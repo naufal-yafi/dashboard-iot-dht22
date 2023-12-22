@@ -3,9 +3,9 @@ import HistoryModel from "@model/HistoryModel";
 
 export const getAllHistory = async (): Promise<HistoryModel> => {
   const response = await fetch(`${api.url}${api.path.history}`, {
-    cache: "no-store",
+    cache: "no-cache",
     next: {
-      revalidate: 0,
+      revalidate: 25,
     },
   });
 

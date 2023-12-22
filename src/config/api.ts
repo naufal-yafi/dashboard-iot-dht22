@@ -3,7 +3,7 @@ const api = {
   path: {
     history: "/history-alert",
     temperature: "/iot",
-  },
+  }
 };
 
 export default api;

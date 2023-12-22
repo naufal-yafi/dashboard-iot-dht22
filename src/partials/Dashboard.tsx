@@ -31,7 +31,7 @@ const Dashboard = () => {
   useEffect(() => {
     const timeReload = setInterval(() => {
       updateSnapshot();
-    }, 10000);
+    }, 30000);
 
     return () => {
       clearInterval(timeReload);
@@ -43,7 +43,7 @@ const Dashboard = () => {
     const countDown = setInterval(() => {
       setCount(countTime);
 
-      if (countTime > 9) {
+      if (countTime > 30) {
         setCount(1);
         countTime = 1;
       } else {
